@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>{{ post[1] }}</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>{{ post[1] }}</h1>
+
+<p>{{ post[2] }}</p>
+
+<hr>
+
+<h3>Comments</h3>
+
+{% for comment in comments %}
+
+<div class="comment">
+
+<p>{{ comment[1] }}</p>
+
+</div>
+
+{% endfor %}
+
+<hr>
+
+{% if session.get("user") %}
+
+<form method="POST">
+
+<textarea
+name="comment"
+placeholder="Write a comment..."
+required></textarea>
+
+<button>
+
+Post Comment
+
+</button>
+
+</form>
+
+{% endif %}
+
+<br>
+
+<a href="/">Back to Home</a>
+
+</div>
+
+</body>
+</html>
