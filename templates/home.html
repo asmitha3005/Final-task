@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blog Platform</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Blog Platform</h1>
+
+{% if session.get("user") %}
+
+<a href="/dashboard">Dashboard</a>
+
+<a href="/logout">Logout</a>
+
+{% else %}
+
+<a href="/login">Login</a>
+
+<a href="/register">Register</a>
+
+{% endif %}
+
+<hr>
+
+{% for post in posts %}
+
+<div class="post">
+
+<h2>{{ post[1] }}</h2>
+
+<p>{{ post[2][:200] }}...</p>
+
+<a href="/post/{{ post[0] }}">Read More</a>
+
+</div>
+
+<hr>
+
+{% endfor %}
+
+</div>
+
+</body>
+
+</html>
